@@ -50,3 +50,7 @@ class BasicGenerator:
     @name.deleter
     def name(self):
       del self._name
+
+
+b = BasicGenerator(5, 'Максим')
+print( b.generate_nick())
