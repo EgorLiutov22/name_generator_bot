@@ -12,7 +12,10 @@ def send_welcome(message):
 def Name_print(message):
 	mm = (message.text).split()
 	if len(mm)==2 and mm[1].isdigit():
-		b = BasicGenerator.BasicGenerator(int(mm[1]), mm[0])
-		bot.send_message(message.chat.id, b.generate_nick())
+		try:
+			b = BasicGenerator.BasicGenerator(int(mm[1]), mm[0])
+			bot.send_message(message.chat.id, b.generate_nick())
+		except:
+			bot.send_message(message.chat.id, "Ошибка")
 
 bot.infinity_polling()
