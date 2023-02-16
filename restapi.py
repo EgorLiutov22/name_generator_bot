@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-# from BasicGenerator import BasicGenerator
+from BasicGenerator import BasicGenerator
 
 app = FastAPI()
 
@@ -9,8 +9,8 @@ async def root(name: str, number: int):
     """
     делаем запрос на генерацию ника
     """
-    # b = BasicGenerator(number, name)
-    return {"message": f'get {name}, {number}'}
+    b = BasicGenerator(number, name)
+    return {"nickname": f'{b}'}
 
 
 @app.post("/gen")
