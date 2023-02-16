@@ -1,0 +1,5 @@
+Pillow==9.4.0
+discord==2.1.0
+discord.py==2.1.1
+fastapi==0.92.0
+telebot==0.0.5
