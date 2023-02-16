@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 # копирование содержимого локальной директории src в рабочую директорию
 COPY src/ .
 # команда, выполняемая при запуске контейнера
-CMD [ "python", "./server.py" ]
+CMD ["uvicorn", "restapi:app", "--host", "0.0.0.0", "--port", "80"]
