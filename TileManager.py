@@ -1,6 +1,10 @@
+from typing import Dict, List
+
+
 class TileManager:
     """Класс для хранения частей ника (тайлов) (имён, декораторов и т.д.)"""
-    def loadAllTiles(self) -> dict[dict]:
+    def loadAllTiles(self) -> dict[
+        str, dict[int, list[str]] | dict[str, dict[int, list[str]] | dict[int, list[str] | str]]]:
         """Функция, в которой храниться словарь всех тайлов.
 
         Returns:
