@@ -7,8 +7,6 @@ def main():
 	import config
 
 
-	print("Tg_compete")
-
 	bot = telebot.TeleBot("token")
 
 
