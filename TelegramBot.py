@@ -12,7 +12,7 @@ def main():
 
 	@bot.message_handler(commands=['start', 'help'])
 	def send_welcome(message):
-		bot.reply_to(message, "здравсвуйте {0.first_name}.Это генератор странных имен, для продолжения напишите имя и уровень странности".format(message.from_user))
+		bot.reply_to(message, "Здравствуйте, {0.first_name}.Это генератор странных имен, для продолжения напишите имя и уровень странности".format(message.from_user))
 
 
 	@bot.message_handler(content_types=['text'])
