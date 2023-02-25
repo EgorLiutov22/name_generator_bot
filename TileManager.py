@@ -1,10 +1,11 @@
-from typing import Dict, List
-
+import json
+import random
 
 class TileManager:
     """Класс для хранения частей ника (тайлов) (имён, декораторов и т.д.)"""
-    def loadAllTiles(self) -> dict[
-        str, dict[int, list[str]] | dict[str, dict[int, list[str]] | dict[int, list[str] | str]]]:
+    
+    @staticmethod
+    def load_name_tyle(current_name: str, least_weird: int, most_weird: int) -> str:
         """Функция, в которой храниться словарь всех тайлов.
 
         Returns:
@@ -14,38 +15,34 @@ class TileManager:
                 - "decorators" — декораторы вокруг ника,
                     внутри ключи по уровню странности, каждому ключу соответствует список декораторов;
         """
-        return {
-            "names": {
-                "Егор": {
-                    1: ["Egor"], 
-                    3: ["Egorka"], 
-                    5: ["Egorchik"], 
-                    7: ["Egorushka", "Jora"], 
-                    9: ["Jorus"],
-                    10: ["Jorazillus"]
-                },
-                "Пётр": {
-                    1: ["Petya"],
-                    2: ["Pyotr", "Peter", "Pierre"],
-                    5: ["Petrusha", "Petrovich"],
-                    6: ["Petrushka"], 
-                    7: ["Petyajka"], 
-                    8: ["Petrusya"], 
-                    10: ["Pyotroshitel"]
-                    },
-                "Максим": {
-                    1: ["Maxim", "Max"], 
-                    3: "Masik", 
-                    5: "Maxyushka",
-                    7: "Maximus",
-                    10: "Maxomolka"}
-            },
-            "decorators": {
-                1: ["_{}_"], 
-                3: ["xX_{}_Xx", "xX-{}-Xx", "Xx_{}_xX"], 
-                4: ["-:[{}]:-"],
-                8: ["-~~~xXX[{}]XXx~~~-"],
-                10: ["_.-=^\"`{}`\"^=-._", "__________{}__________", "[                                      {}                                      ]"]
-            },
-            
-        }
+        name_tiles = TileManager.load_all_tyles()["names"][TileManager.to_number_format(current_name)]
+        least_to_most = set(range(least_weird, most_weird + 1))
+        available_keys = set(list(map(int, name_tiles.keys())))
+        weirdness_range = least_to_most.intersection(available_keys)
+        return random.choice([name_tiles[str(i)][random.randint(0, len(name_tiles[str(i)]) - 1)] for i in weirdness_range])
+    
+    @staticmethod
+    def load_decorator_tyle(least_weird: int, most_weird: int) -> str:
+        """Функция, в которой храниться словарь всех тайлов.
+
+        Returns:
+            dict[dict]: словарь тайлов, значения:
+                - "names" — имена, на которых может основываться ник,
+                    внутри словари с ключами по уровню странности, каждому ключу соответствует список имён;
+                - "decorators" — декораторы вокруг ника,
+                    внутри ключи по уровню странности, каждому ключу соответствует список декораторов;
+        """
+        name_tiles = TileManager.load_all_tyles()["decorators"]
+        least_to_most = set(range(least_weird, most_weird + 1))
+        available_keys = set(list(map(int, name_tiles.keys())))
+        weirdness_range = least_to_most.intersection(available_keys)
+        return random.choice([name_tiles[str(i)][random.randint(0, len(name_tiles[str(i)]) - 1)] for i in weirdness_range])
+    
+    @staticmethod
+    def load_all_tyles() -> any:
+        return json.load(open("tiles.json"))
+    
+    @staticmethod
+    def to_number_format(word: str) -> str:
+        alpabet = "а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я".split(" ")
+        return '.'.join(list(map(str, [alpabet.index(i) for i in word.lower()])))

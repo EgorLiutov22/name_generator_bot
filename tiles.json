@@ -1,0 +1,35 @@
+{
+    "names": {
+        "5.3.15.17": {
+            "1": ["Egor"], 
+            "3": ["Egorka"], 
+            "5": ["Egorchik"], 
+            "7": ["Egorushka", "Jora"], 
+            "9": ["Jorus"],
+            "10": ["Jorazillus"]
+        },
+        "16.6.19.17": {
+            "1": ["Petya"],
+            "2": ["Pyotr", "Peter", "Pierre"],
+            "5": ["Petrusha", "Petrovich"],
+            "6": ["Petrushka"], 
+            "7": ["Petyajka"], 
+            "8": ["Petrusya"], 
+            "10": ["Pyotroshitel"]
+            },
+        "13.0.11.18.9.13": {
+            "1": ["Maxim", "Max"], 
+            "3": ["Masik"], 
+            "5": ["Maxyushka"],
+            "7": ["Maximus"],
+            "10": ["Maxomolka"]}
+    },
+    "decorators": {
+        "1": ["_{}_"], 
+        "3": ["xX_{}_Xx", "xX-{}-Xx", "Xx_{}_xX"], 
+        "4": ["-:[{}]:-"],
+        "8": ["-~~~xXX[{}]XXx~~~-"],
+        "10": ["_.-=^\"`{}`\"^=-._", "__________{}__________", "[                                      {}                                      ]"]
+    }
+    
+}
